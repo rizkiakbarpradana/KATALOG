@@ -1,0 +1,2083 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f4f2ec;
+    --surface: #ffffff;
+    --surface2: #e9e6de;
+
+    --text: #171817;
+    --muted: #74766f;
+
+    --gold: #b78a52;
+
+    --line: rgba(23, 24, 23, .12);
+
+    --shadow:
+        0 25px 70px rgba(25, 29, 26, .12);
+
+    --sans: "DM Sans", sans-serif;
+    --display: "Playfair Display", serif;
+}
+
+
+/* DARK MODE */
+
+html[data-theme="dark"] {
+
+    --bg: #101210;
+    --surface: #191c19;
+    --surface2: #222621;
+
+    --text: #f1efe8;
+    --muted: #9da198;
+
+    --gold: #d1a66e;
+
+    --line: rgba(255,255,255,.1);
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.35);
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family: var(--sans);
+
+    line-height: 1.55;
+
+    overflow-x: hidden;
+}
+
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+.container {
+
+    width: min(
+        1160px,
+        calc(100% - 40px)
+    );
+
+    margin: auto;
+}
+
+
+/* HEADER */
+
+.header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 40;
+
+    background:
+        color-mix(
+            in srgb,
+            var(--bg) 88%,
+            transparent
+        );
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+
+.nav {
+
+    height: 78px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.logo img {
+
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+
+.logo strong {
+
+    display: block;
+
+    font-size: 16px;
+
+    letter-spacing: .15em;
+}
+
+
+.logo small {
+
+    display: block;
+
+    font-size: 7px;
+
+    letter-spacing: .15em;
+
+    color: var(--muted);
+}
+
+
+.nav-menu {
+
+    display: flex;
+
+    gap: 35px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.nav-menu a {
+
+    transition: .2s;
+}
+
+
+.nav-menu a:hover {
+
+    color: var(--text);
+}
+
+
+.nav-tools {
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.theme-btn,
+.menu-btn {
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--line);
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    border-radius: 50%;
+}
+
+
+.menu-btn {
+
+    display: none;
+
+    border-radius: 12px;
+}
+
+
+/* HERO */
+
+.hero {
+
+    min-height: 660px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 60px;
+
+    align-items: center;
+
+    padding: 70px 0;
+}
+
+
+.eyebrow {
+
+    margin: 0 0 15px;
+
+    color: var(--gold);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .22em;
+}
+
+
+.hero h1,
+h2 {
+
+    margin: 0;
+
+    line-height: 1.05;
+
+    letter-spacing: -.05em;
+}
+
+
+.hero h1 {
+
+    font-size:
+        clamp(50px, 6vw, 78px);
+}
+
+
+em {
+
+    font-family: var(--display);
+
+    font-weight: 600;
+}
+
+
+.hero-description {
+
+    max-width: 540px;
+
+    margin:
+        25px 0 34px;
+
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 24px;
+}
+
+
+.btn-primary {
+
+    min-height: 50px;
+
+    padding: 0 22px;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    background: var(--text);
+
+    color: var(--bg);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    transition: .25s;
+}
+
+
+.btn-primary:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 28px #0003;
+}
+
+
+.text-link {
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    border-bottom:
+        1px solid var(--text);
+
+    padding-bottom: 4px;
+}
+
+
+/* HERO PRODUCT */
+
+.hero-visual {
+
+    position: relative;
+
+    min-height: 500px;
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+.glow {
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #b78a5240,
+            transparent 68%
+        );
+}
+
+
+.featured-card {
+
+    width: min(415px, 95%);
+
+    padding: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--surface),
+            var(--surface2)
+        );
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 28px;
+
+    box-shadow: var(--shadow);
+
+    transform: rotate(2deg);
+}
+
+
+.featured-label {
+
+    font-size: 9px;
+
+    letter-spacing: .2em;
+
+    font-weight: 800;
+
+    color: var(--muted);
+}
+
+
+.hero-bag-area {
+
+    height: 325px;
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+.bag {
+
+    position: relative;
+
+    width: 150px;
+
+    height: 180px;
+
+    border-radius:
+        15px 15px 23px 23px;
+
+    display: grid;
+
+    place-items: center;
+
+    box-shadow:
+        0 25px 30px #0004;
+}
+
+
+.bag::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 76px;
+
+    height: 58px;
+
+    left: 50%;
+
+    top: -47px;
+
+    transform:
+        translateX(-50%);
+
+    border:
+        10px solid currentColor;
+
+    border-bottom: 0;
+
+    border-radius:
+        50px 50px 0 0;
+}
+
+
+.bag::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 16px;
+
+    right: 16px;
+
+    bottom: 20px;
+
+    height: 45px;
+
+    border:
+        1px solid #fff3;
+
+    border-radius: 10px;
+
+    background: #fff1;
+}
+
+
+.bag span {
+
+    z-index: 2;
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+}
+
+
+.bag-polo {
+
+    background: #252b28;
+
+    color: #252b28;
+
+    transform: scale(1.2);
+}
+
+
+.featured-info {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: end;
+}
+
+
+.featured-info small {
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+.featured-info h3 {
+
+    margin: 2px 0 0;
+
+    font-size: 18px;
+}
+
+
+.featured-info strong {
+
+    color: var(--gold);
+
+    font-size: 14px;
+}
+
+
+/* STAT */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    border-top:
+        1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+
+.stats div {
+
+    padding: 25px 10px;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.stats div + div {
+
+    border-left:
+        1px solid var(--line);
+
+    padding-left: 35px;
+}
+
+
+.stats strong {
+
+    font-size: 25px;
+}
+
+
+.stats span {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .13em;
+}
+
+
+/* SECTION */
+
+.section {
+
+    padding: 115px 0;
+}
+
+
+.section-heading {
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content:
+        space-between;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+}
+
+
+.section-heading h2 {
+
+    font-size:
+        clamp(40px,5vw,62px);
+}
+
+
+.section-heading > p {
+
+    max-width: 350px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    margin: 0;
+}
+
+
+/* FILTER */
+
+.catalog-tools {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 18px;
+
+    margin-bottom: 28px;
+}
+
+
+.filters {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.filter {
+
+    padding:
+        10px 16px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.filter:hover,
+.filter.active {
+
+    background: var(--text);
+
+    color: var(--bg);
+
+    border-color: var(--text);
+}
+
+
+.search {
+
+    height: 42px;
+
+    min-width: 210px;
+
+    padding: 0 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 999px;
+
+    background: var(--surface);
+}
+
+
+.search span {
+
+    font-size: 20px;
+
+    color: var(--muted);
+}
+
+
+.search input {
+
+    width: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 11px;
+}
+
+
+/* PRODUCT */
+
+.product-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 20px;
+}
+
+
+.product-card {
+
+    background: var(--surface);
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: .28s;
+}
+
+
+.product-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow: var(--shadow);
+}
+
+
+.product-image {
+
+    padding: 12px;
+
+    position: relative;
+}
+
+
+.badge {
+
+    position: absolute;
+
+    z-index: 2;
+
+    top: 23px;
+
+    left: 23px;
+
+    padding: 6px 9px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 99px;
+
+    background: var(--surface);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: .14em;
+}
+
+
+.art {
+
+    height: 245px;
+
+    border-radius: 18px;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #fff4,
+            transparent 40%
+        ),
+        var(--art-bg);
+}
+
+
+.art .bag {
+
+    transform: scale(.88);
+}
+
+
+.art .polo {
+
+    background: #252b28;
+
+    color: #252b28;
+}
+
+
+.art .eiger {
+
+    background: #34463e;
+
+    color: #34463e;
+}
+
+
+.art .navy {
+
+    background: #303c4a;
+
+    color: #303c4a;
+}
+
+
+.product-info {
+
+    padding:
+        17px 19px 20px;
+}
+
+
+.product-brand {
+
+    color: var(--gold);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+}
+
+
+.product-info h3 {
+
+    margin:
+        6px 0 9px;
+
+    font-size: 17px;
+}
+
+
+.product-bottom {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+}
+
+
+.price {
+
+    font-size: 13px;
+
+    font-weight: 800;
+}
+
+
+.detail {
+
+    font-size: 10px;
+
+    color: var(--muted);
+
+    font-weight: 700;
+}
+
+
+.empty {
+
+    text-align: center;
+
+    color: var(--muted);
+
+    padding: 45px;
+
+    display: none;
+}
+
+
+/* BRAND */
+
+.brands-section {
+
+    background: var(--surface2);
+}
+
+
+.brand-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background: var(--line);
+
+    border:
+        1px solid var(--line);
+}
+
+
+.brand-item {
+
+    min-height: 280px;
+
+    padding: 30px;
+
+    background: var(--surface2);
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+.brand-item > span {
+
+    font-size: 10px;
+
+    color: var(--muted);
+}
+
+
+.brand-item h3 {
+
+    font-family: var(--display);
+
+    font-size: 42px;
+
+    margin:
+        auto 0 8px;
+}
+
+
+.brand-item p {
+
+    max-width: 270px;
+
+    margin:
+        0 0 24px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+
+.brand-item b {
+
+    font-size: 8px;
+
+    letter-spacing: .18em;
+}
+
+
+/* CONTACT */
+
+.contact-box {
+
+    padding:
+        55px 60px;
+
+    border-radius: 28px;
+
+    background: #171817;
+
+    color: #f4f1e9;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    align-items: end;
+
+    gap: 30px;
+}
+
+
+.contact-box h2 {
+
+    font-size:
+        clamp(38px,5vw,58px);
+}
+
+
+.contact-box p:not(.eyebrow) {
+
+    max-width: 460px;
+
+    color: #a8aaa4;
+
+    font-size: 12px;
+}
+
+
+.btn-light {
+
+    min-height: 50px;
+
+    padding:
+        0 22px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 999px;
+
+    background: #f3f1ea;
+
+    color: #171817;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* FOOTER */
+
+.footer {
+
+    background: #111311;
+
+    color: #777b75;
+}
+
+
+.footer-top {
+
+    padding: 60px 0;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 50px;
+}
+
+
+.footer-logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #f4f1e9;
+}
+
+
+.footer-logo img {
+
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+
+.footer-logo strong {
+
+    display: block;
+
+    letter-spacing: .15em;
+}
+
+
+.footer-logo small {
+
+    display: block;
+
+    font-size: 7px;
+
+    letter-spacing: .1em;
+}
+
+
+.footer-about > p {
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+.footer-columns {
+
+    display: flex;
+
+    gap: 80px;
+}
+
+
+.footer-columns div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    min-width: 110px;
+}
+
+
+.footer-columns b {
+
+    color: #f4f1e9;
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+
+    margin-bottom: 6px;
+}
+
+
+.footer-columns a {
+
+    font-size: 11px;
+}
+
+
+.footer-columns a:hover {
+
+    color: white;
+}
+
+/* ==========================================================================
+   PERBAIKAN TATA LETAK FOOTER BARU
+   ========================================================================== */
+
+/* Styling tambahan untuk Teks Copyright di bagian atas */
+.copyright-text {
+    margin-top: 25px !important;
+    font-size: 11px;
+    color: #555852; /* Warna muted gelap agar elegan */
+}
+
+/* Mengubah area bawah menjadi tumpukan vertikal */
+.footer-bottom-new {
+    border-top: 1px solid rgba(255, 255, 255, .06);
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Menjaga semua konten di area bawah tetap di tengah */
+    gap: 35px; /* Jarak antara tombol back to top dan gambar di bawahnya */
+}
+
+/* Gaya Tombol Back to Top */
+.footer-bottom-new button {
+    border: 0;
+    border-radius: 99px;
+    background: #e8e6df;
+    color: #171817;
+    padding: 11px 24px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.footer-bottom-new button:hover {
+    background: #ffffff;
+}
+
+/* Wadah Gambar Watermark Paling Bawah */
+.footer-watermark-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+/* Mengatur ukuran gambar agar pas di tengah kontainer dan proporsional */
+.watermark-large-img {
+    max-width: 480px; /* Batasi lebarnya agar rapi dan tidak terlalu mendominasi layar */
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.25; /* Dibuat samar elegan khas marka air (watermark) */
+    pointer-events: none; /* Mencegah gambar mengganggu klik pengguna */
+}
+
+/* RESPONSIVE LAYOUT (UNTUK HP) */
+@media(max-width: 680px) {
+    .watermark-large-img {
+        max-width: 280px; /* Ukuran gambar mengecil secara otomatis saat dibuka di smartphone */
+    }
+}
+
+/* MODAL */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: none;
+
+    place-items: center;
+
+    padding: 18px;
+}
+
+
+.modal.open {
+
+    display: grid;
+}
+
+
+.modal-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #000a;
+
+    backdrop-filter: blur(8px);
+}
+
+
+.modal-card {
+
+    position: relative;
+
+    z-index: 1;
+
+    width:
+        min(900px,100%);
+
+    max-height: 94vh;
+
+    overflow: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    background: var(--surface);
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 40px 110px #0008;
+}
+
+
+.modal-close {
+
+    position: absolute;
+
+    right: 14px;
+
+    top: 14px;
+
+    z-index: 3;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid var(--line);
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    font-size: 24px;
+}
+
+
+.modal-product {
+
+    min-height: 540px;
+
+    padding: 24px;
+
+    background: var(--surface2);
+
+    display: grid;
+
+    place-items: center;
+}
+
+
+.modal-product .art {
+
+    width: 100%;
+
+    height: 100%;
+
+    min-height: 490px;
+}
+
+
+.modal-product .bag {
+
+    transform: scale(1.25);
+}
+
+
+.modal-content {
+
+    padding:
+        55px 44px 35px;
+}
+
+
+.modal-brand {
+
+    color: var(--gold);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+}
+
+
+.modal-content h2 {
+
+    font-size: 40px;
+
+    margin:
+        8px 0 15px;
+}
+
+
+.modal-content > p {
+
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+
+.product-meta {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 10px;
+
+    margin: 20px 0;
+
+    padding:
+        20px 0;
+
+    border-top:
+        1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
+}
+
+
+.product-meta div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.product-meta small {
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .12em;
+}
+
+
+.product-meta strong {
+
+    font-size: 11px;
+}
+
+
+.ready {
+
+    color: #4d8968;
+}
+
+
+#checkoutForm {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 100px;
+
+    gap: 11px;
+}
+
+
+#checkoutForm label {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+#checkoutForm input,
+#checkoutForm select {
+
+    height: 45px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 11px;
+
+    background: var(--surface2);
+
+    color: var(--text);
+
+    padding:
+        0 12px;
+
+    outline: 0;
+
+    font-size: 11px;
+}
+
+
+.checkout-btn {
+
+    grid-column: 1 / -1;
+
+    margin-top: 3px;
+
+    width: 100%;
+}
+
+
+.checkout-note {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    margin-top: 12px;
+}
+
+
+/* TABLET */
+
+@media(max-width: 900px) {
+
+    .hero {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    .hero-visual {
+
+        min-height: 420px;
+    }
+
+
+    .product-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .brand-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .brand-item {
+
+        min-height: 220px;
+    }
+
+}
+
+
+/* HP */
+
+@media(max-width: 680px) {
+
+    .container {
+
+        width:
+            calc(100% - 28px);
+    }
+
+
+    .nav {
+
+        height: 68px;
+    }
+
+
+    .nav-menu {
+
+        display: none;
+
+        position: absolute;
+
+        top: 68px;
+
+        left: 14px;
+
+        right: 14px;
+
+        padding: 18px;
+
+        flex-direction: column;
+
+        gap: 16px;
+
+        background: var(--surface);
+
+        border:
+            1px solid var(--line);
+
+        border-radius: 15px;
+
+        box-shadow: var(--shadow);
+    }
+
+
+    .nav-menu.open {
+
+        display: flex;
+    }
+
+
+    .menu-btn {
+
+        display: block;
+    }
+
+
+    .hero {
+
+        min-height: auto;
+
+        padding:
+            60px 0 50px;
+    }
+
+
+    .hero h1 {
+
+        font-size: 47px;
+    }
+
+
+    .hero-description {
+
+        font-size: 14px;
+    }
+
+
+    .hero-visual {
+
+        min-height: 350px;
+    }
+
+
+    .hero-bag-area {
+
+        height: 260px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .stats div + div {
+
+        border-left: 0;
+
+        border-top:
+            1px solid var(--line);
+
+        padding-left: 10px;
+    }
+
+
+    .section {
+
+        padding: 80px 0;
+    }
+
+
+    .section-heading {
+
+        display: block;
+
+        margin-bottom: 30px;
+    }
+
+
+    .section-heading > p {
+
+        margin-top: 18px;
+    }
+
+
+    .catalog-tools {
+
+        display: block;
+    }
+
+
+    .search {
+
+        min-width: 100%;
+
+        margin-top: 13px;
+    }
+
+
+    .product-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .contact-box {
+
+        padding:
+            38px 27px;
+
+        display: block;
+    }
+
+
+    .contact-box .btn-light {
+
+        margin-top: 24px;
+    }
+
+
+    .footer-top {
+
+        display: block;
+
+        padding: 45px 0;
+    }
+
+
+    .footer-columns {
+
+        gap: 35px;
+
+        margin-top: 30px;
+    }
+
+
+    .footer-bottom {
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        padding:
+            25px 0;
+
+        text-align: center;
+    }
+
+
+    .footer-bottom span:last-child {
+
+        text-align: center;
+    }
+
+
+    .footer-bottom button {
+
+        justify-self: center;
+    }
+
+
+    .modal-card {
+
+        grid-template-columns: 1fr;
+
+        max-height: 95vh;
+    }
+
+
+    .modal-product {
+
+        min-height: 280px;
+    }
+
+
+    .modal-product .art {
+
+        min-height: 270px;
+    }
+
+
+    .modal-content {
+
+        padding:
+            34px 23px 28px;
+    }
+
+
+    .modal-content h2 {
+
+        font-size: 33px;
+    }
+
+}
+
+
+/* HP KECIL */
+
+@media(max-width:390px) {
+
+    .hero h1 {
+
+        font-size: 41px;
+    }
+
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .product-meta {
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    #checkoutForm {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .checkout-btn {
+
+        grid-column: auto;
+    }
+
+}
+
+/* ==========================================================================
+   RESET & PERBAIKAN MUTLAK TATA LETAK GAMBAR
+   ========================================================================== */
+
+.product-image {
+    padding: 12px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    height: auto !important;
+}
+
+.art {
+    height: 245px !important;
+    max-height: 245px !important;
+    border-radius: 18px !important;
+    background: var(--surface2) !important; 
+    display: flex !important;
+    align-items: center !important;    
+    justify-content: center !important; 
+    padding: 15px !important;           
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+
+.product-real-img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 170px !important;    
+    max-height: 170px !important;   
+    object-fit: contain !important; 
+    display: block !important;
+    margin: auto !important;
+    transform: none !important;     
+}
+
+/* ==========================================================================
+   PERBAIKAN TOTAL GAMBAR FEATURED (BAGIAN ATAS / HERO)
+   ========================================================================== */
+
+.featured-card {
+    width: min(415px, 95%) !important;
+    overflow: hidden !important; 
+    position: relative !important;
+}
+
+
+.hero-bag-area {
+    height: 325px !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;    
+    justify-content: center !important; 
+    padding: 10px !important;
+}
+
+
+.hero-bag-area img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important; 
+    display: block !important;
+    margin: auto !important;
+}
+
+/* ==========================================================================
+   SPLASH SCREEN MULTI-DEVICE RESPONSIVE (ALL MEDIA)
+   ========================================================================== */
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg); /* Otomatis mengikuti tema aktif (putih/hitam) */
+    z-index: 99999; /* Angka super tinggi agar tidak terbalap oleh komponen modal apa pun */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s;
+    padding: 20px; /* Menjaga ruang aman agar konten tidak menempel ke ujung layar gadget kecil */
+    box-sizing: border-box;
+}
+
+/* Memicu hilangnya layar pembuka secara halus */
+.splash-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.splash-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; /* Batas area konten maksimal di layar desktop besar */
+    text-align: center;
+    gap: clamp(20px, 4vw, 45px); /* Jarak dinamis antara logo dan loading spinner sesuai ukuran layar */
+}
+
+.splash-logo {
+    /* Menggunakan rumus fluid sizing: lebar logo membesar fleksibel mengikuti resolusi layar */
+    width: clamp(200px, 45vw, 420px); 
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+    animation: scaleUpShopee 1.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Optimasi bayangan logo khusus untuk latar belakang putih (Mode Terang) */
+html[data-theme="light"] .splash-logo {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.06));
+}
+
+.splash-loader {
+    /* Ukuran loading spinner dibuat proporsional secara dinamis */
+    width: clamp(28px, 4vw, 38px);
+    height: clamp(28px, 4vw, 38px);
+    border: 3.5px solid rgba(183, 138, 82, 0.15);
+    border-top-color: var(--gold); /* Menggunakan warna aksen emas brand RAP */
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0; /* Mencegah spinner menjadi lonjong/gepeng di layar mini */
+}
+
+/* Animasi Pop-Up Lembut Khas Shopee */
+@keyframes scaleUpShopee {
+    0% {
+        transform: scale(0.75);
+        opacity: 0;
+    }
+    75% {
+        transform: scale(1.02); /* Efek membal elastis ringan */
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==========================================================================
+   BREAKPOINTS OPTIMIZATION (MEDIA QUERIES)
+   ========================================================================== */
+
+/* 1. Untuk Layar Jam Tangan Pintar / HP Layar Lipat Mini (Lebar di bawah 360px) */
+@media (max-width: 360px) {
+    .splash-logo {
+        width: 180px; /* Ukuran aman agar logo tidak pecah atau terpotong */
+    }
+    .splash-content {
+        gap: 15px;
+    }
+}
+
+/* 2. Untuk Smartphone Standar & Portrait (Lebar 361px hingga 768px) */
+@media (min-width: 361px) and (max-width: 768px) {
+    .splash-logo {
+        width: 60vw; /* Mengambil porsi 60% dari lebar layar HP */
+    }
+}
+
+/* 3. Untuk Mode Landscape HP & Tablet / iPad (Lebar 769px hingga 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .splash-logo {
+        width: 40vw; /* Ukuran seimbang untuk orientasi tablet */
+    }
+}
+
+/* 4. Untuk Monitor Ultra-Wide atau TV 4K (Layar ekstra lebar di atas 1400px) */
+@media (min-width: 1400px) {
+    .splash-logo {
+        width: 440px; /* Batasan proporsi optimal mata memandang di monitor besar */
+    }
+}
