@@ -248,7 +248,7 @@ document.getElementById("checkoutForm").addEventListener("submit", event => {
 
     const message = `Halo RAP, saya ${customerName}.\n\nSaya ingin memesan:\nProduk: ${selectedProduct.name}\nBrand: ${selectedProduct.brand}\nKategori: ${selectedProduct.category}\nJumlah: ${quantity} pcs\nHarga: ${rupiah(selectedProduct.price)}\nTotal: ${rupiah(total)}\n\nMohon info stok dan proses pesanannya.\nTerima kasih.`;
 
-    window.open(`https://wa.me{WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
 });
 
 /* ==========================================================================
@@ -288,9 +288,36 @@ document.getElementById("backTop").addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// Indikator kemajuan halaman dan animasi masuk ringan saat bagian terlihat
+const scrollProgress = document.getElementById("scrollProgress");
+const updateScrollProgress = () => {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    scrollProgress.style.transform = `scaleX(${progress / 100})`;
+};
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("resize", updateScrollProgress);
+updateScrollProgress();
+
+if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".section-heading, .brand-item, .contact-box, .stats").forEach(element => {
+        element.classList.add("reveal-on-scroll");
+        revealObserver.observe(element);
+    });
+}
+
 // Integrasi Link Kontak Dinamis (Fixed Template Literals Bug)
-document.getElementById("contactWA").href = `https://wa.me{WA_NUMBER}?text=${encodeURIComponent("Halo RAP, saya ingin bertanya tentang koleksi tas.")}`;
-document.getElementById("whatsappLink").href = `https://wa.me{WA_NUMBER}`;
+document.getElementById("contactWA").href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Halo RAP, saya ingin bertanya tentang koleksi tas.")}`;
+document.getElementById("whatsappLink").href = `https://wa.me/${WA_NUMBER}`;
 document.getElementById("instagramLink").href = INSTAGRAM_URL;
 
 /* ==========================================================================
